@@ -6,21 +6,21 @@ describe('calculateCGPA', () => {
     const result = calculateCGPA([
       {
         subjectName: 'Data Structures',
-        credits: 4,
+        credits: 1,
         gradeObtained: 'A',
         gradePoint: 9,
       },
       {
         subjectName: 'Advanced Calculus',
-        credits: 3,
+        credits: 1,
         gradeObtained: '85%',
         gradePoint: 10,
       },
     ])
 
     expect(result.ok).toBe(true)
-    expect(result.totalCredits).toBe(7)
-    expect(result.cgpa).toBe(9.43)
+    expect(result.totalCredits).toBe(2)
+    expect(result.cgpa).toBe(9.5)
     expect(result.rows).toHaveLength(2)
   })
 

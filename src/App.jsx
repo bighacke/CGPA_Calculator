@@ -11,7 +11,6 @@ function createEmptySubject() {
   return {
     id: nextSubjectId++,
     subjectName: '',
-    credits: '',
     grade: '',
   }
 }
@@ -71,8 +70,7 @@ function App() {
       <header className="app-header">
         <h1>CGPA Calculator</h1>
         <p>
-          Enter subject credits and grades to compute your cumulative grade point
-          average.
+          Enter subject grades to compute your cumulative grade point average.
         </p>
       </header>
 
@@ -86,11 +84,7 @@ function App() {
       />
 
       {results && (
-        <ResultsTable
-          rows={results.rows}
-          totalCredits={results.totalCredits}
-          cgpa={results.cgpa}
-        />
+        <ResultsTable rows={results.rows} cgpa={results.cgpa} />
       )}
     </main>
   )

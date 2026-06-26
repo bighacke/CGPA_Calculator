@@ -18,19 +18,6 @@ function SubjectRow({ index, subject, errors = {}, canRemove, onChange, onRemove
       </div>
 
       <div className="field">
-        <label htmlFor={`credits-${subject.id}`}>Credits</label>
-        <input
-          id={`credits-${subject.id}`}
-          type="text"
-          inputMode="decimal"
-          value={subject.credits}
-          placeholder="4"
-          onChange={(event) => onChange(index, 'credits', event.target.value)}
-        />
-        {errors.credits && <span className="field-error">{errors.credits}</span>}
-      </div>
-
-      <div className="field">
         <label htmlFor={`grade-${subject.id}`}>Grade</label>
         <input
           id={`grade-${subject.id}`}

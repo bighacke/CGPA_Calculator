@@ -5,14 +5,13 @@ describe('validateSubject', () => {
   it('accepts valid subject entries', () => {
     const result = validateSubject({
       subjectName: 'Data Structures',
-      credits: '4',
       grade: 'A',
     })
 
     expect(result.ok).toBe(true)
     expect(result.value).toEqual({
       subjectName: 'Data Structures',
-      credits: 4,
+      credits: 1,
       gradeObtained: 'A',
       gradePoint: 9,
     })
@@ -21,7 +20,6 @@ describe('validateSubject', () => {
   it('flags missing subject name', () => {
     const result = validateSubject({
       subjectName: '   ',
-      credits: '3',
       grade: 'B',
     })
 
@@ -29,21 +27,9 @@ describe('validateSubject', () => {
     expect(result.errors.subjectName).toBe('Subject name is required')
   })
 
-  it('flags non-positive credits', () => {
-    const result = validateSubject({
-      subjectName: 'Math',
-      credits: '-2',
-      grade: 'C',
-    })
-
-    expect(result.ok).toBe(false)
-    expect(result.errors.credits).toBe('Credits must be a positive number')
-  })
-
   it('flags invalid grades', () => {
     const result = validateSubject({
       subjectName: 'Math',
-      credits: '3',
       grade: 'Z',
     })
 
@@ -57,8 +43,8 @@ describe('validateSubject', () => {
 describe('validateSubjects', () => {
   it('collects row errors without partial validation', () => {
     const result = validateSubjects([
-      { subjectName: 'Valid', credits: '3', grade: 'A' },
-      { subjectName: '', credits: '2', grade: 'B' },
+      { subjectName: 'Valid', grade: 'A' },
+      { subjectName: '', grade: 'B' },
     ])
 
     expect(result.ok).toBe(false)

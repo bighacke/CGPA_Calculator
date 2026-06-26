@@ -1,21 +1,13 @@
 import { parseGradeInput } from './gradeMapping.js'
 
-export function validateSubject({ subjectName, credits, grade }) {
+export const DEFAULT_SUBJECT_CREDITS = 1
+
+export function validateSubject({ subjectName, grade }) {
   const errors = {}
 
   const trimmedName = subjectName.trim()
   if (!trimmedName) {
     errors.subjectName = 'Subject name is required'
-  }
-
-  const creditsValue = credits.trim()
-  if (!creditsValue) {
-    errors.credits = 'Credits must be a positive number'
-  } else {
-    const parsedCredits = Number(creditsValue)
-    if (Number.isNaN(parsedCredits) || parsedCredits <= 0) {
-      errors.credits = 'Credits must be a positive number'
-    }
   }
 
   const gradeResult = parseGradeInput(grade)
@@ -33,7 +25,7 @@ export function validateSubject({ subjectName, credits, grade }) {
     ok: true,
     value: {
       subjectName: trimmedName,
-      credits: Number(creditsValue),
+      credits: DEFAULT_SUBJECT_CREDITS,
       gradeObtained: gradeResult.gradeObtained,
       gradePoint: gradeResult.gradePoint,
     },
