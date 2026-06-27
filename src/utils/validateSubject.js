@@ -2,7 +2,7 @@ import { parseGradeInput } from './gradeMapping.js'
 
 export const DEFAULT_SUBJECT_CREDITS = 1
 
-export function validateSubject({ subjectName, grade }) {
+export function validateSubject({ subjectName, grade, credits }) {
   const errors = {}
 
   const trimmedName = subjectName.trim()
@@ -11,10 +11,19 @@ export function validateSubject({ subjectName, grade }) {
   }
 
   const gradeResult = parseGradeInput(grade)
-  if (!grade.trim()) {
+  if (!grade || !grade.trim()) {
     errors.grade = 'Invalid grade: use 8+, A–F or a percentage (0–100)'
   } else if (!gradeResult.ok) {
     errors.grade = gradeResult.error
+  }
+
+  const creditsStr = String(credits || '').trim()
+  let parsedCredits = DEFAULT_SUBJECT_CREDITS
+  if (creditsStr) {
+    parsedCredits = parseFloat(creditsStr)
+    if (isNaN(parsedCredits) || parsedCredits <= 0) {
+      errors.credits = 'Credits must be a positive number'
+    }
   }
 
   if (Object.keys(errors).length > 0) {
@@ -25,7 +34,7 @@ export function validateSubject({ subjectName, grade }) {
     ok: true,
     value: {
       subjectName: trimmedName,
-      credits: DEFAULT_SUBJECT_CREDITS,
+      credits: parsedCredits,
       gradeObtained: gradeResult.gradeObtained,
       gradePoint: gradeResult.gradePoint,
     },
