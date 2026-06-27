@@ -16,7 +16,6 @@ describe('calculateCGPA', () => {
         gradeObtained: '85%',
         gradePoint: 10,
       },
-      
     ])
 
     expect(result.ok).toBe(true)
