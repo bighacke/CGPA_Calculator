@@ -7,7 +7,7 @@ function SubjectRow({ index, subject, errors = {}, canRemove, onChange, onRemove
           id={`subject-name-${subject.id}`}
           type="text"
           value={subject.subjectName}
-          placeholder="Data Structures"
+          placeholder="e.g., Data Structures"
           onChange={(event) =>
             onChange(index, 'subjectName', event.target.value)
           }
@@ -27,6 +27,20 @@ function SubjectRow({ index, subject, errors = {}, canRemove, onChange, onRemove
           onChange={(event) => onChange(index, 'grade', event.target.value)}
         />
         {errors.grade && <span className="field-error">{errors.grade}</span>}
+      </div>
+
+      <div className="field">
+        <label htmlFor={`credits-${subject.id}`}>Credits (Optional)</label>
+        <input
+          id={`credits-${subject.id}`}
+          type="number"
+          min="0.5"
+          step="0.5"
+          value={subject.credits}
+          placeholder="e.g., 3 (defaults to 1)"
+          onChange={(event) => onChange(index, 'credits', event.target.value)}
+        />
+        {errors.credits && <span className="field-error">{errors.credits}</span>}
       </div>
 
       {canRemove && (
