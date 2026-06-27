@@ -1,5 +1,4 @@
 export const LETTER_TO_POINT = {
- 'A+':10,
   A: 9,
   B: 8,
   C: 7,
@@ -13,7 +12,7 @@ export const TOP_GRADE_POINT = 10
 
 const PERCENTAGE_BANDS = [
   { min: 80, max: 100, letter: TOP_GRADE_LABEL, point: TOP_GRADE_POINT },
-  { min: 80, max: 100, letter: 'A+', point: 10 },
+  {min}
   { min: 70, max: 79, letter: 'A', point: 9 },
   { min: 60, max: 69, letter: 'B', point: 8 },
   { min: 50, max: 59, letter: 'C', point: 7 },

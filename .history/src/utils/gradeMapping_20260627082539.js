@@ -1,5 +1,5 @@
 export const LETTER_TO_POINT = {
- 'A+':10,
+  '':10,
   A: 9,
   B: 8,
   C: 7,
