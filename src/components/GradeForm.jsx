@@ -18,7 +18,7 @@ function GradeForm({
     >
       <div className="form-header">
         <h2>Enter Subject Grades</h2>
-        <p>Add each subject with a letter grade or percentage.</p>
+        <p>Add each subject with its letter grade, percentage, and optional credits.</p>
       </div>
 
       <div className="subject-rows">

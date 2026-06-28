@@ -1,6 +1,6 @@
 import { parseGradeInput } from './gradeMapping.js'
 
-export const DEFAULT_SUBJECT_CREDITS = 3
+export const DEFAULT_SUBJECT_CREDITS = 1
 
 export function validateSubject({ subjectName, grade, credits }) {
   const errors = {}
