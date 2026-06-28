@@ -13,11 +13,12 @@ export const TOP_GRADE_LABEL = '8+'
 export const TOP_GRADE_POINT = 10
 
 const PERCENTAGE_BANDS = [
-  { min: 85, max: 100, letter: 'A+', point: 10 },  // Add this line
-  { min: 80, max: 84, letter: 'A', point: 9 },     // Adjust A range
-  { min: 70, max: 79, letter: 'B', point: 8 },
-  { min: 60, max: 69, letter: 'C', point: 7 },
-  { min: 50, max: 59, letter: 'D', point: 6 },
+  { min: 80, max: 100, letter: TOP_GRADE_LABEL, point: TOP_GRADE_POINT },
+  { min: 80, max: 100, letter: 's', point: 10 },
+  { min: 70, max: 79, letter: 'A', point: 9 },
+  { min: 60, max: 69, letter: 'B', point: 8 },
+  { min: 50, max: 59, letter: 'C', point: 7 },
+  { min: 40, max: 49, letter: 'D', point: 6 },
   { min: 0, max: 39, letter: 'F', point: 0 },
 ]
 

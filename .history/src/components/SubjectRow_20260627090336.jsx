@@ -37,7 +37,7 @@ function SubjectRow({ index, subject, errors = {}, canRemove, onChange, onRemove
           min="0.5"
           step="0.5"
           value={subject.credits}
-          placeholder="e.g., 3 (defaults to 3)"
+          placeholder="e.g., 3 (defaults to 1)"
           onChange={(event) => onChange(index, 'credits', event.target.value)}
         />
         {errors.credits && <span className="field-error">{errors.credits}</span>}
