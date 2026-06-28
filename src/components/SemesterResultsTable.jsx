@@ -1,4 +1,4 @@
-function ResultsTable({ rows, cgpa, totalCredits }) {
+function SemesterResultsTable({ rows, cgpa, totalCredits }) {
   // SVG progress ring calculations
   const radius = 54
   const strokeWidth = 8
@@ -7,14 +7,14 @@ function ResultsTable({ rows, cgpa, totalCredits }) {
   const strokeDashoffset = circumference - percentage * circumference
 
   return (
-    <section className="results subject-results">
-      <h2>CGPA Results</h2>
-
+    <section className="results semester-results">
+      <h2>Cumulative CGPA Summary</h2>
+      
       <div className="results-summary-card">
         <div className="cgpa-ring-container">
           <svg className="cgpa-ring" width="130" height="130">
             <defs>
-              <linearGradient id="cgpaGradSub" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id="cgpaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#a855f7" /> {/* Purple-violet */}
                 <stop offset="100%" stopColor="#3b82f6" /> {/* Blue */}
               </linearGradient>
@@ -34,7 +34,7 @@ function ResultsTable({ rows, cgpa, totalCredits }) {
               r={radius}
               strokeWidth={strokeWidth}
               fill="transparent"
-              stroke="url(#cgpaGradSub)"
+              stroke="url(#cgpaGrad)"
               strokeDasharray={circumference}
               strokeDashoffset={strokeDashoffset}
               strokeLinecap="round"
@@ -67,18 +67,16 @@ function ResultsTable({ rows, cgpa, totalCredits }) {
         <table>
           <thead>
             <tr>
-              <th>Subject</th>
-              <th>Grade Obtained</th>
-              <th>Grade Points</th>
+              <th>Semester / Period</th>
+              <th>GPA Obtained</th>
               <th>Credits Weight</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, index) => (
-              <tr key={`${row.subject}-${index}`}>
-                <td>{row.subject}</td>
-                <td>{row.gradeObtained}</td>
-                <td>{row.gradePoints.toFixed(2)}</td>
+            {rows.map((row, idx) => (
+              <tr key={idx}>
+                <td>{row.semester}</td>
+                <td>{row.gpa.toFixed(2)}</td>
                 <td>{row.credits}</td>
               </tr>
             ))}
@@ -89,4 +87,4 @@ function ResultsTable({ rows, cgpa, totalCredits }) {
   )
 }
 
-export default ResultsTable
+export default SemesterResultsTable
